@@ -19,7 +19,7 @@ public class UnionFind {
     };
     public void makeNode(int val){
         Node node = new Node(val);
-        node.parent = node;
+        node.parent = node; //node points to itself
         node.rank =0;
         vertexNodeMap.put(val, node);
     }

@@ -1,4 +1,4 @@
-package dataStructures.Tries;
+package dataStructures.tries;
 
 import java.util.Arrays;
 

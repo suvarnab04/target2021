@@ -1,4 +1,4 @@
-package dataStructures.Trees;
+package dataStructures.trees;
 
 public class Node {
     private int data;

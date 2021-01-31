@@ -1,11 +1,11 @@
 package curatedlist.tree;
 
-import apple.laf.JRSUIUtils;
-import sun.awt.image.ImageWatched;
-
 import java.util.LinkedList;
 import java.util.Queue;
-
+/*
+https://leetcode.com/problems/validate-binary-search-tree/
+https://backtobackswe.com/platform/content/test-a-tree-for-the-bst-property/video
+ */
 public class ValidBSTBFS {
     class AugNode{
         TreeNode node;

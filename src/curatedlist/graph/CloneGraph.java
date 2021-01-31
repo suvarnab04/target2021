@@ -7,20 +7,13 @@ https://backtobackswe.com/platform/content/clone-a-graph/video
  */
 class Node {
     public int val;
-
     public List<Node> neighbors;
-    public Node() {
-        val = 0;
-        neighbors = new ArrayList<Node>();
-    }
+
     public Node(int _val) {
         val = _val;
         neighbors = new ArrayList<Node>();
     }
-    public Node(int _val, ArrayList<Node> _neighbors) {
-        val = _val;
-        neighbors = _neighbors;
-    }
+
 }
 public class CloneGraph {
     public Node cloneGraph(Node node) {
@@ -39,8 +32,6 @@ public class CloneGraph {
         while(!queue.isEmpty()){
 
             Node curr = queue.remove();
-
-
 
             for(Node neighbor : curr.neighbors){
 

@@ -11,6 +11,7 @@ public class InsertInterval {
         List<int[]> output = new LinkedList();
 
         int i=0;
+        // add all the intervals ending before newInterval starts
         while(i< intervals.length && newInterval[0] > intervals[i][1]){
             output.add(new int[]{intervals[i][0], intervals[i][1]});
             i++;
@@ -19,17 +20,18 @@ public class InsertInterval {
         //merge
         int newStart = newInterval[0];
         int newEnd = newInterval[1];
-        //newStart and start overlaps or newEnd and end overlaps
-        //newStart should be in the start n end range.
-        //after merging the newStart and newEnd changes so we check the remaining intervals if we can merge them as well
-        while(i< intervals.length && ((newInterval[0] >= intervals[i][0] && newInterval[0] <= intervals[i][1]) || (newInterval[0] <= intervals[i][0] && newInterval[1] >=intervals[i][0]))){
+        // merge all overlapping intervals to one considering newInterval
+        while(i< intervals.length && intervals[i][0] <= newInterval[1]){
             newStart = Math.min(intervals[i][0], newInterval[0]);
             newEnd = Math.max(intervals[i][1], newInterval[1]);
             newInterval[0] = newStart;
             newInterval[1] = newEnd;
             i++;
         }
+        // add the union of intervals we got
         output.add(new int[]{newStart, newEnd});
+
+        // add all the rest
         while(i< intervals.length){
             output.add(new int[]{intervals[i][0], intervals[i][1]});
             i++;

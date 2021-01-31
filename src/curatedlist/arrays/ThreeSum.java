@@ -1,5 +1,8 @@
 package curatedlist.arrays;
-
+/*
+https://leetcode.com/problems/3sum/
+https://www.youtube.com/watch?v=nZyzf4ZxHWA
+ */
 import java.util.*;
 /*
 Method 1: extend two sum to get three sum

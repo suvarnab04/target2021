@@ -1,5 +1,9 @@
 package curatedlist.arrays;
+/*
+https://leetcode.com/problems/maximum-subarray/
 
+
+ */
 public class MaxProductSubArray {
     public int maxProduct(int[] nums) {
 

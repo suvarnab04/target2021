@@ -18,4 +18,17 @@ public class CountingBits {
         }
         return count;
     }
+    /*
+    with while loop
+     */
+    public int countOneBit1(int num){
+        int count =0 ;
+        while(num >0){
+
+            count += num &1;
+
+            num =  num >> 1;
+        }
+        return count;
+    }
 }

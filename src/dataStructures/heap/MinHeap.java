@@ -62,11 +62,11 @@ public class MinHeap {
 
     }
     public void shiftUp(){
-        int index = size -1;
-        while(hasParent(index) &&  heap[index] < heap[getParentIndex(index)]){
+        int childIndex = size -1;
+        while(hasParent(childIndex) &&  heap[childIndex] < heap[getParentIndex(childIndex)]){
             //swap with the parent
-            swap(index, getParentIndex(index));
-            index = getParentIndex(index);
+            swap(childIndex, getParentIndex(childIndex));
+            childIndex = getParentIndex(childIndex);
         }
     }
     private void ensureCapacity(){

@@ -33,9 +33,8 @@ public class StockBuySell {
         while(i< prices.length){
             if(prices[i]< min){
                 min = prices[i];
-            }else if(prices[i] > min){
-                maxProfit = Math.max(maxProfit, prices[i]- min);
             }
+            maxProfit = Math.max(maxProfit, prices[i]- min);
             i++;
         }
         return maxProfit;

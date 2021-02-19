@@ -1,5 +1,8 @@
 package curatedlist.binary;
-
+/*
+https://leetcode.com/problems/missing-number/submissions/
+https://www.youtube.com/watch?v=YMYVYSWL93w
+ */
 public class MissingNumber {
     public int missingNumber(int[] nums) {
         if(nums == null || nums.length==0){
@@ -8,16 +11,15 @@ public class MissingNumber {
         int i=0;
         while(i< nums.length){
             int j= nums[i];
-            if(j > nums.length-1 || nums[i]== nums[j]){ // if the next index is out of bound or number is at right index then move to the next number
-                i++;
-            }else if(nums[i]!= nums[j]){
+            if(j< nums.length-1 && nums[i]!= nums[j]  ){ //numbers are within the range and not sorted
                 //swap
                 int temp = nums[i];
                 nums[i] = nums[j];
                 nums[j] = temp;
 
+            }else{
+                i++;
             }
-            // i++;
         }
         for(i=0;i< nums.length;i++){
             if(i!= nums[i]){

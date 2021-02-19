@@ -17,12 +17,10 @@ public class MergeIntervals {
             int[] prev = intervals[i];
             int start = prev[0];
             int end = prev[1];
-            //currents's start is less than previous end the merger
-            while(i<intervals.length && intervals[i][0] <= prev[1]){
-                start = Math.min(prev[0], intervals[i][0]);
-                end = Math.max(prev[1], intervals[i][1]);
-                prev[0] = start;
-                prev[1] = end;
+            //currents's start is less than previous end then merge
+            while(i<intervals.length && intervals[i][0] <= end){
+                start = Math.min(start, intervals[i][0]);
+                end = Math.max(end, intervals[i][1]);
 
                 i++;
 

@@ -3,74 +3,44 @@ package curatedlist.arrays;
 import java.util.Arrays;
 /*
 https://leetcode.com/problems/search-in-rotated-sorted-array/
+https://backtobackswe.com/platform/content/minimum-item-in-a-rotated-sorted-array/video
+https://www.youtube.com/watch?v=QdVrY3stDD4
  */
 public class SearchRotatedSortedArray {
-    /*public int search(int[] nums, int target) {
-          for(int i=0; i< nums.length;i++){
-              if(nums[i] == target){
-                  return i;
-              }
-          }
-          return -1;
-
-      }*/
-    //binary search
     public int search(int[] nums, int target) {
-
-        int mid = (nums.length)/2;
-        int rotatedIndex = findRotatedIndex(nums);
-
-        System.out.println("rotated index::"+ rotatedIndex);
-
-        int ret =-1;
-        if(nums[rotatedIndex] == target){
-            return rotatedIndex;
-        }
-
-        ret = binarySearch(nums, target, rotatedIndex+1, nums.length-1);
-
-        if( ret ==-1){
-            System.out.println(Arrays.toString(nums) +" target:"+target+" target not found!Checking in first half");
-            return binarySearch(nums, target, 0,rotatedIndex-1);
-        }
-
-        return ret;
-    }
-
-    public int binarySearch(int[] nums, int target, int start, int end){
-
-
-        if(end< start){
-            return -1;
-        }
-
-        int mid = (start+end)/2;
-
-        if(nums[mid] == target){
-            return mid;
-        }else if(target > nums[mid]){
-            return binarySearch(nums, target, mid+1, end);
-        }else{
-
-            return binarySearch(nums, target, start, mid-1);
-        }
-
-    }
-    public int findRotatedIndex(int[] nums){
-
-        if(nums.length==1){
-            return 0;
-        }
-        int i =0;
-        while(i<= nums.length){
-
-            int j = (i+1)%nums.length;
-            if(nums[j] < nums[i]){
-                return i;
+        int left = 0;
+        int right = nums.length -1;
+        while(left < right){
+            int mid = left + (right - left)/2;
+            if(nums[mid] > nums[right]){ // numbers on the right are less than mid
+                left = mid +1;
+            }else{
+                right = mid;
             }
-            i++;
         }
-        return 0;
+        System.out.println("smallest item is at index::"+ left);
+        //the index where left and right meet is the smallest element in the array
+        int start = left;
+        left =0;
+        right = nums.length-1;
+
+        if(target>= nums[start] && target <= nums[right] ){ //right half
+            left = start ;
+        }else{
+            right = start; // left half
+        }
+
+        while(left<= right){
+            int mid = (left + right )/2;
+            if(nums[mid] == target){
+                return mid;
+            }else if(target > nums[mid]){
+                left = mid+1;
+            }else{
+                right = mid-1;
+            }
+        }
+        return -1;
     }
 
 }

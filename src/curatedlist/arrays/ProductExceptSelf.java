@@ -3,6 +3,7 @@ package curatedlist.arrays;
 
 /**
  * https://leetcode.com/problems/product-of-array-except-self/
+ * https://www.youtube.com/watch?v=khTiTSZ5QZY
  */
 /*
 leftproduct will have the product of all the number on left side of the number

@@ -15,6 +15,7 @@ public class TestSinglyLinkedList {
         list.printList();
         list.insertAtEnd(4);
         list.printList();
+       System.out.println("\nlength of the list::"+list.getLength());
 
     }
 }

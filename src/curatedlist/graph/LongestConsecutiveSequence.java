@@ -1,8 +1,12 @@
 package curatedlist.graph;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+
 /*
+https://www.youtube.com/watch?v=P6RZZMu_maU
 https://leetcode.com/problems/longest-consecutive-sequence/
 consecutive sequence is any sequence in which the numbers are consecutive but need not to be present one after other
 1, 10,2,25 -- 1,2 is the consecutive sequence
@@ -18,7 +22,33 @@ Step2: Union
  2.5.if only next is present then smallest parent become the parent of other node.
  */
 public class LongestConsecutiveSequence {
+    /**
+     * more intuitive approach
+     * @param nums
+     * @return
+     */
+
     public int longestConsecutive(int[] nums) {
+        Set<Integer> set = new HashSet();
+        for(int num : nums){
+            set.add(num);
+        }
+        int longest =0;
+        for(int i=0;i< nums.length;i++){
+            int num = nums[i];
+            if(!set.contains(num-1)){
+                //keep looking for the consecutive number
+                int length =0;
+                while(set.contains(num)){
+                    length++;
+                    num = num+1;
+                }
+                longest = Math.max(longest, length);
+            }
+        }
+        return longest;
+    }
+    public int longestConsecutive1(int[] nums) {
         if(nums == null || nums.length ==0){
             return 0;
         }

@@ -1,5 +1,9 @@
 package curatedlist.linkedlist;
-
+/*
+https://leetcode.com/problems/merge-two-sorted-lists/
+https://www.youtube.com/watch?v=GfRQvf7MB3k
+https://www.youtube.com/watch?v=K63Mjf-H0B0
+ */
 public class MergeList {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode merge = new ListNode(0);

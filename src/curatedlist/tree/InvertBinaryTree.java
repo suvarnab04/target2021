@@ -1,10 +1,32 @@
 package curatedlist.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * https://leetcode.com/problems/invert-binary-tree/
  */
 
 public class InvertBinaryTree {
+    public TreeNode invertTreeBFS(TreeNode root) {
+        if(root == null){
+            return root;
+        }
+        Queue<TreeNode> queue = new LinkedList();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            TreeNode curr = queue.remove();
+            if(curr!= null){
+                TreeNode temp = curr.left;
+                curr.left = curr.right;
+                curr.right = temp;
+
+                queue.add(curr.left);
+                queue.add(curr.right);
+            }
+        }
+        return root;
+    }
     public TreeNode invertTree(TreeNode root) {
         if(root == null){
             return null;

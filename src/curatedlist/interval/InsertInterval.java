@@ -21,6 +21,7 @@ public class InsertInterval {
         int newStart = newInterval[0];
         int newEnd = newInterval[1];
         // merge all overlapping intervals to one considering newInterval
+        //intervals's start is before the new intervals's end then merge
         while(i< intervals.length && intervals[i][0] <= newInterval[1]){
             newStart = Math.min(intervals[i][0], newInterval[0]);
             newEnd = Math.max(intervals[i][1], newInterval[1]);

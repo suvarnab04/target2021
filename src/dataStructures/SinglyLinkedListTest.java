@@ -1,6 +1,0 @@
-package dataStructures;
-
-class SinglyLinkedListTest {
-
-
-}

@@ -1,5 +1,7 @@
 package curatedlist.binary;
-
+/*
+https://leetcode.com/problems/number-of-1-bits/
+ */
 public class CountingBits {
     public int[] countBits(int num) {
         int [] result = new int[num+1];

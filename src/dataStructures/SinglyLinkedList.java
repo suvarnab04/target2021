@@ -93,6 +93,15 @@ public class SinglyLinkedList<T> {
         headNode = headNode.nextNode;
     }
 
+    public int getLength(){
+        Node n = headNode;
+        int length =0;
+        while(n!=null){
+            length++;
+            n= n.nextNode;
+        }
+        return length;
+    }
 
 
 }

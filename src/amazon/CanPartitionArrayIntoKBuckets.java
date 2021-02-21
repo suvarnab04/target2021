@@ -4,19 +4,30 @@ import java.util.HashMap;
 
 /**
  * leetcode 416
+ * https://www.youtube.com/watch?v=qpgqhp_9d1s&list=PLH62zle5HycBxWWIzqgUpG5ShvLC5vABN&index=5
  */
-public class CanPartition {
+public class CanPartitionArrayIntoKBuckets {
     //equal partition
     public boolean canPartition(int[] nums){
         int total =0;
         for(int i=0;i< nums.length;i++){
-            total += nums[i];
+            total += nums[i]; //sum of all numbers in the array
         }
         if(total%2 != 0){
             return false;
         }
         return canPartition(nums, 0, 0,total, new HashMap<String, Boolean>());
     }
+
+    /**
+     *
+     * @param nums
+     * @param index
+     * @param currSum
+     * @param totalSum
+     * @param state
+     * @return true if we can partition in two buckets
+     */
     public boolean canPartition(int[] nums, int index, int currSum , int totalSum, HashMap<String,Boolean> state){
         String currState = index +""+currSum;
 
@@ -60,9 +71,8 @@ public class CanPartition {
                 used[i] = true;
                 if(canPartitionIntoKBuckets(nums, bucket,i, currSum+ nums[i], totalSum, used)){
                     return true;
-                }else{
-                    return false;
                 }
+                used[i] = false; //unselect the number
             }
         }
         return false;

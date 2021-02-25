@@ -1,4 +1,10 @@
 package recursion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /*
 https://www.youtube.com/watch?v=NdF1QDTRkck
 subsets of abc are a, b,c,ab, ac, abc.....
@@ -25,8 +31,39 @@ public class SubSet {
     void listSubSet(String s){
         RecSubSets("",s);
     }
+    public static void recSubSet(int[] arr, List<List<Integer>> results, int start, List<Integer> tempList){
+            if(start== arr.length){
+                results.add(tempList);
+            }
+            for(int i=start;i< arr.length;i++){
+                //pick the item recurse
+                tempList.add(arr[i]);
+                recSubSet(arr, results, start+1, new ArrayList<>(tempList));
+                tempList.remove(tempList.size()-1);
+                recSubSet(arr,results,start+1, new ArrayList<>(tempList) );
+                //unpick the item and recurse
+            }
+    }
+    public static List<List<Integer>> listSubSet(int[] arr){
+        List<List<Integer>> results = new ArrayList();
+        recSubSet(arr, results, 0, new ArrayList());
+        return results;
+    }
     public static void main(String [] args){
         SubSet s = new SubSet();
         s.listSubSet("abc");
+
+        int[] arr = new int[]{1,2,3};
+        List<List<Integer>> results  = listSubSet(arr);
+        for(int i=0;i< results.size();i++){
+            System.out.println();
+            List<Integer> subSet = results.get(i);
+            for(int j=0;j< subSet.size();j++){
+                System.out.print(subSet.get(j) +" ,");
+            }
+
+        }
+
+
     }
 }

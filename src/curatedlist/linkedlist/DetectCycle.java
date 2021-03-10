@@ -25,6 +25,13 @@ public class DetectCycle {
         }
         return false;
     }
+
+    /**
+     *
+     *
+     * @param head
+     * @return head of the cycle
+     */
     public ListNode detectCycle(ListNode head) {
         if(head == null || head.next == null){
             return null;

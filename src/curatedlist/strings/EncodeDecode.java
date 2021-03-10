@@ -2,7 +2,16 @@ package curatedlist.strings;
 
 import java.util.ArrayList;
 import java.util.List;
+///https://leetcode.com/problems/encode-and-decode-strings/
 
+/**
+ * other way id put the metatdat first such as the length of each string and then the data
+ * eg:
+ * List<String> = 6, amazon, prime
+ * metadata= 4 1 6 3 6 amazon prime
+ * (1 6 3)
+ *
+ */
 public class EncodeDecode {
     // Encodes a list of strings to a single string.
     public String encode(List<String> strs) {

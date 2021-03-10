@@ -2,6 +2,7 @@ package curatedlist.strings;
 
 /**
  * https://leetcode.com/problems/longest-palindromic-substring/
+ * https://www.youtube.com/watch?v=y2BD4MJqV20
  */
 
 public class LongestPalindrome {
@@ -24,16 +25,16 @@ public class LongestPalindrome {
         return s.substring(lo, lo + maxLen);
     }
 
-    private void extendPalindrome(String s, int end, int start) {
-        while (end >= 0 && start < s.length() && s.charAt(end) == s.charAt(start)) {
-            end--;
-            start++;
+    private void extendPalindrome(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
         }
-        int length = start - end - 1;
+        int length = right - left - 1;
         if (maxLen < length) {
-            lo = end + 1;
+            lo = left + 1;
             maxLen = length;
-            maxString = s.substring(end+1, start);
+            maxString = s.substring(left+1, right);
         }
     }
     public static void main(String[] args){

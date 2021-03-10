@@ -13,13 +13,7 @@ consecutive sequence is any sequence in which the numbers are consecutive but ne
 Step1: create node for each number, node points to itself i.e. the parent of node is node itself, and add it to
 the map of val-->Node
 Step2: Union
- 2.1 for each number in the array check if node for next = (num+1) or prev =num(-1) is present in the map.
- for eg for num 2, check if node for 1 or node for 3 are present in the map. If present that means nums[] has that
- number so that will be part of our answer
- 2.2 both next and prev are not present then we dont have anything to process move to the next number in the array
- 2.3 if both prev and next are present in the map, then get the parents for both and the smaller parent becomes the parent of bigger node.
- 2.4 if only prev is present the depending on which is smaller amongst the node and prev becomes the parent
- 2.5.if only next is present then smallest parent become the parent of other node.
+ smallest parent become the parent of other node.
  */
 public class LongestConsecutiveSequence {
     /**
@@ -89,18 +83,10 @@ public class LongestConsecutiveSequence {
             Node prev = nodesMap.get(val-1); // get the node for previous number
             Node next = nodesMap.get(val+1); // get the node for next number
 
-            if(prev == null && next == null){ //if next and prev are not present then these cant be part of the result
-                return;
-            }
 
-            if(prev!=null && next!=null){ // if both are present then join them and create one tree
-                unionSet(prev, next);
 
-            }else if(prev!=null){ // join node and prev val
-                unionSet(node, prev);
-            }else{
-                unionSet(node, next); // join node and next
-            }
+            unionSet(node, prev);
+            unionSet(node, next);
 
         }
         public void unionSet(Node node1, Node node2){

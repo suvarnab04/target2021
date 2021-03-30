@@ -39,10 +39,10 @@ public class DetectCycle {
         ListNode slow = head;
         ListNode fast = head;
 
-        while(fast.next!=null && fast.next.next!=null){
+        while(fast!=null && fast.next!=null){
             slow = slow.next;
             fast = fast.next.next;
-            if(slow ==  fast){
+            if(slow ==  fast){ //detected the cycle
                 slow = slow.next;
                 int count = 1;
                 while(slow!= fast){

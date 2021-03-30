@@ -42,30 +42,30 @@ public class RemoveKthFromEnd {
             return null;
         }
 
-        ListNode start = head;
-        ListNode slow = start;
-        ListNode fast = start;
+        ListNode dummy = new ListNode(-1);
+        ListNode working = head;
+        ListNode dummyHead = dummy;
 
-        int i=1;
-        while(fast!=null && i<= n+1){
-            fast= fast.next;
+        int i=0;
+        while(working!=null && i< n){
+            working= working.next;
             i++;
         }
-        if(fast==null){
-            //i is the length of the list
-            System.out.println(i-1);
-            //delete head
-            if((i-1) == n){
-                return slow.next ;
-            }
 
+        while(working!=null){
+            working = working.next;
+            if(dummyHead.next == null){ //first time we need to point dummy.next  to the head of the list
+                dummyHead.next = head;
+            }
+            dummyHead= dummyHead.next;
         }
-        while(fast!=null){
-            slow = slow.next;
-            fast= fast.next;
+        if(dummyHead.next==null){
+            dummyHead.next = head.next;
+        }else{
+            dummyHead.next = dummyHead.next.next;
         }
-        slow.next = slow.next.next;
-        return start;
+
+        return dummy.next;
     }
     /**
      more intutive solution:

@@ -1,10 +1,10 @@
-package curatedlist.tree;
+package curatedlist.lowLevelDesign;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HashMap {
+public class CustomHashMap<K,V> {
     /*
       We will use generics so that the keys and values can be whatever the
       caller would like. We can implement the buckets with a plain array, but

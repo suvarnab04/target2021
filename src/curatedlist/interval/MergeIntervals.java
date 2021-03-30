@@ -7,7 +7,26 @@ import java.util.List;
 https://leetcode.com/problems/merge-intervals/
  */
 public class MergeIntervals {
+
     public int[][] merge(int[][] intervals) {
+
+        //sort by the start
+        Arrays.sort(intervals,(a,b)->Integer.compare(a[0], b[0]));
+
+        LinkedList<int[]> list= new LinkedList<int[]>();
+
+        for(int i=0;i< intervals.length;i++){
+
+            if(list.isEmpty() ||intervals[i][0] > list.getLast()[1]){
+                list.add(intervals[i]);
+            }else{
+                list.getLast()[1] = Math.max(list.getLast()[1], intervals[i][1]);
+            }
+        }
+        return list.toArray(new int[list.size()][2]);
+
+    }
+    public int[][] merge1(int[][] intervals) {
         List<int[]> results = new LinkedList();
         Arrays.sort(intervals,(a, b)->Integer.compare(a[0], b[0]));
         int i=0;
@@ -28,6 +47,7 @@ public class MergeIntervals {
             results.add(new int[]{start, end});
 
         }
+
 
         return results.toArray(new int[results.size()][2]);
 
